@@ -1,0 +1,654 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Wheather App</title>
+    
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+        <style>
+          
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+  *{
+      margin: 0;
+      padding: 0;
+      font-family: 'poppins';
+  }
+  body{
+       background-image: url("https://live-production.wcms.abc-cdn.net.au/dca3514a8e5cb9cc2383251214783018?impolicy=wcms_crop_resize&cropH=432&cropW=768&xPos=0&yPos=41&width=862&height=485"); 
+      background-size: cover;
+      background-color: rgb(180, 218, 242);
+  }
+  #mainContainer{
+      width: 75%;
+      height: 100%;
+      background-color: #fff;
+      margin: auto;
+     margin-top: 15px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
+  }
+  #left
+  {
+      width: 70%;
+      height: 100%;
+   background-color: rgb(237, 251, 253);
+  }
+
+  #city{
+      margin-left: 130px;
+      width: 400px;
+      height: 30px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      font-weight: lighter;
+      padding-left: 20px;
+      border: none;
+      border: 1px solid rgb(71, 71, 71);
+  }
+  #Search{
+      padding: 3px 10px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 900;
+      background-color: teal;
+      color: white;
+
+  }
+  #leftOne{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: auto;
+      height: 100px;
+      margin-top: 25px;
+  }
+  #leftOne>div:first-child{
+       width: 40%;
+       height: 80%;
+  }
+  
+
+  #leftOne>div:last-child{
+      width: 20%;
+      height: 60%;
+  }
+  #timeDiv{
+      line-height: 40px;
+  }
+ #time{
+     font-size: 60px;
+     font-weight: 900;
+ }
+ #ampm{
+     font-size: 40px;
+     font-weight: 500;
+ }
+ #date{
+     font-size: 25px;
+     margin-left: 5px;
+ }
+
+  #right{
+      width: 30%;
+      height: 100%;
+  }
+  #day{
+      padding: 5px 12px;
+      margin: 10px 0px 10px 0px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+  }
+  #gmap_canvas{
+      border-radius: 20px;
+      margin-top: 5px;
+  }
+  #night{
+    padding: 5px 8px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+ 
+   }
+ #days{
+      width: 100%;
+      height: 150px;
+      display: flex;
+      margin-top: 10px;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(53, 46, 46);
+ }
+ #days>div{
+     width: 15%;
+     height: 90%;
+     text-align: center;
+     margin-right: 3px;
+     border: .5px solid rgb(97, 94, 94);
+     background-color: rgb(65, 64, 64);
+     border-radius: 5px;
+ }
+ /* #days div i{
+     margin-top: 10px;
+     font-size: 28px;
+     margin-bottom: 5px;
+     color: orange;
+ } */
+
+ #icon
+ {
+     width: 50px;
+     height: 50px;
+ }
+#days div p{
+    margin-top: 5px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+#days div img{
+    margin-top: -10px;
+    width: 60px;
+    height: 60px;
+}
+#days div{
+    color: white;
+}
+#days div i{
+    color: yellow;
+    font-size: 35px;
+}
+#wImg{
+   width: 150px;
+   height: 150px;
+   margin-top: -30px;
+}
+#curDay{
+    font-size: 30px;
+    font-weight: 600;
+}
+#cals{
+    margin-top: -12px;
+    color: white;
+}
+#Ncals{
+    color: white;
+}
+  #rightOne{
+      width: 80%;
+      height: 300px;
+     margin: 30px 0px 0px 30px;
+     border-radius: 20px;
+    background-color: #1a395c;
+    color: white;
+    text-align: center;
+  }
+  #loc{
+      display: flex;  
+  }
+  #loc>p{
+    margin:20px 0px 0px 5px;
+    color: yellow;
+    font-weight: 900;
+  }
+ 
+  #log{
+      font-size: 15px;
+      margin:25px 0px 0px 20px;
+  }
+
+  #rightOne>div:nth-child(2) i{
+      font-size: 70px;
+      margin-top: 30px;
+      
+  }
+  #temp{
+      font-size: 60px;
+      font-weight: 900;
+      margin-top: -38px;
+      font-size: 60px;
+  }
+  #sel{
+    font-size: 45px;
+    font-weight: 600;
+
+  }
+  #o{
+      font-size: 30px;
+  }
+  #Rightdate{
+      margin-top: -10px;
+      font-size: 20px;
+  }
+  #rightTop{
+    width: 80%;
+    height: 12%;
+    margin: auto;
+    background-color: #405f0f;
+    color: white;
+    margin-top: 20px;
+    font-weight: 400;
+    opacity: .9;
+    border-radius: 10px;
+}
+#rightTop2{
+
+    width: 80%;
+    height: 15%;
+    margin: auto;
+    background-color: #ee2400;
+    color: white;
+    margin-top: 10px;
+    font-weight: 400;
+    opacity: .9;
+    border-radius: 10px;
+
+}
+#rightTop2>div{
+    margin-left: 20px;
+}
+#rightTop2>div:nth-child(1)
+{
+    padding-top: 10px;
+}
+#rightTop>div{
+    margin-left: 20px;
+}
+#rightTop>div:nth-child(1)
+{
+    padding-top: 10px;
+}
+
+#map1{
+ height: 220px;
+ width: 650px;
+ border-radius: 20px;
+ margin-top: 20px;
+ margin-left: 30px;
+}
+        </style>
+    </head>
+    <body>
+        <div id="mainContainer">
+          <div id="right">
+            <div id="rightOne">
+              <div id="loc">
+               <i id="log" class="fas fa-map-marker-alt"></i>
+               <p id="cityName">Noida</p>
+              </div>
+            <div> <i class="fas fa-cloud-sun-rain"></i></div>
+             <div id="sel"><span id="temp">29</span>&#176;C</div>
+            <div id="Rightdate" class="Rightdate">Saturday, 10 March </div>
+                
+            </div>
+    
+            <div id="rightTop">
+              <div id="first">Humidity &nbsp :&nbsp&nbsp&nbsp<span id="humidity">34</span></div>
+              <div>Pressure &nbsp :&nbsp&nbsp&nbsp<span id="pressure">1010</span></div>
+              
+          </div>
+    
+          <div id="rightTop2">
+            <div><b>💨 </b>Wind Speed &nbsp :&nbsp&nbsp&nbsp<span id="wind">4.16</span></div>
+            <div><b>🌅 </b>Sun Rise &nbsp :&nbsp&nbsp&nbsp<span id="rise">6:23 am</span></div>
+            <div><b>🌄 </b>Sun Set &nbsp :&nbsp&nbsp&nbsp<span id="set">6:00 am</span></div>
+          </div>
+       </div>
+    
+            <div id="left">
+            
+                <input type="text" id="city" placeholder="Enter City to know Wheather">
+                <button id="Search" onclick="getWeather()">Search</button>
+    
+                 <div id="leftOne">
+                   <div id="timeDiv">
+                           <div id="time" class="time">
+                                10:35 <span id="ampm">AM</span>
+                           </div>
+                           <div id="date" class="date">
+                               Thursday, 10 March
+                           </div>
+                      </div>
+    
+                      <div id="btns">
+                       <button id="night" onclick="nightFun()">Night</button>
+                       <button id="day" onclick="dayFun()">Day</button>
+                </div>
+            </div>
+    
+      <div id="days">
+        <div>
+              <p>Sun</p>
+              <i class="fas fa-cloud-sun-rain"></i>
+              <div>Max-33&#176;C</div>
+              <div>Min-23&#176;C</div> 
+            </div>
+            <div>
+              <p>Mon</p>
+              <i class="fas fa-bolt"></i>
+              <div>Max-34&#176;C</div>
+              <div>Min-23&#176;C</div> 
+            </div>
+            <div>
+              <p>Tue</p>
+              <i class="fas fa-cloud-moon"></i>
+              <div>Max-29&#176;C</div>
+              <div>Min-23&#176;C</div> 
+            </div>
+            <div>
+              <p>Wed</p>
+              <i class="fas fa-cloud"></i>
+              <div>Max-36&#176;C</div>
+              <div>Min-25&#176;C</div> 
+            </div>
+            <div>
+              <p>Thur</p>
+              <i class="fas fa-cloud-sun-rain"></i>
+              <div>Max-32&#176;C</div>
+              <div>Min-29&#176;C</div> 
+            </div>
+            <div>
+              <p>Fri</p>
+              <i class="fas fa-bolt"></i>
+              <div>Max-33&#176;C</div>
+              <div>Min-30&#176;C</div> 
+            </div>
+            
+      </div>
+    
+    
+      <div id="map">
+    
+      
+          <iframe id="map1" src="https://maps.google.com/maps?q=noida&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"></iframe>
+    
+    
+      </div>
+    
+    
+     </div>
+    
+    
+    
+    
+        </div>
+       
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+          
+    <script>
+let city="Noida";
+let container = document.getElementById("container");
+
+async function getWeather()
+{
+ 
+    try{
+
+        city = document.getElementById('city').value;
+
+        
+    let res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ba98deab6ce9cd74af9735fb0625c520&units=metric`);
+    if(res==undefined){
+        console.log("mai chal rha hu")
+    } 
+
+    let data = await res.json();
+
+    // console.log("data:",data);
+    console.log(data);
+   
+    appendsData(data)
+
+    }
+
+    catch(err)
+    {
+        alert("Kindly Enter Correct City");
+        console.log("err:",err);
+
+    }
+
+}  
+
+getWeather();
+
+    function appendsData(data)
+    {
+        // container.innerHTML=null;
+       
+       if(data.name==undefined)
+       {
+        document.getElementById("cityName").innerText="Noida";
+        return false;
+
+       }
+        //document.getElementById("cityName").innerText=data.name;
+
+        document.getElementById("humidity").innerText=data.main.humidity;
+        document.getElementById("pressure").innerText=data.main.pressure;
+        document.getElementById("wind").innerText=data.wind.speed;
+
+ 
+        document.getElementById("rise").innerHTML=`${window.moment(data.sys.sunrise*1000).format('HH:mm a')}`;
+        document.getElementById("set").innerText=`${window.moment(data.sys.sunset*1000).format('HH:mm a')}`;
+
+        //document.getElementById("temp").innerText=Math.round(data.main.temp);
+
+        document.getElementById("map").innerHTML=null;
+        let iframe = document.createElement("iframe");
+        iframe.setAttribute("id","map1");
+        iframe.src=`https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
+        document.getElementById("map").append(iframe);
+
+
+
+        let lat = data.coord.lat;
+        let lon = data.coord.lon;
+        Wheather(lat,lon);
+        async function Wheather(lat,lon)
+        {
+        
+        
+            try{
+        
+                let daily = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=,hourly,minutely&units=metric&appid=ba98deab6ce9cd74af9735fb0625c520`);
+                 
+                let dailyData = await daily.json();
+        
+                console.log(dailyData);
+                eigthDays(dailyData);
+                   
+            
+            }
+            catch(err)
+            {   
+        
+                //console.log("err :", err);
+        
+            }
+        
+}
+        
+        
+        
+          
+        function eigthDays(Data)
+        {
+         
+            document.getElementById("days").innerHTML=null;
+            document.getElementById("rightOne").innerHTML=null;
+            for(let i=0;i<7;i++)
+            {
+                
+                if(i==0)
+                {
+                    
+                    let divRight = document.createElement("div");
+                    let loc = document.createElement("div");
+                    loc.id="loc";
+                    let icon = document.createElement("i");
+                    icon.innerHTML=`<i id="log" class="fas fa-map-marker-alt"></i>`
+                    let pTag = document.createElement("p");
+                    pTag.innerText=data.name;
+                    pTag.id="cityName";
+
+                    loc.append(icon,pTag);
+                    let p = document.createElement("p");
+                    p.innerText=`${window.moment(Data.daily[i].dt*1000).format('ddd')}`;
+                    p.id="curDay";
+                   
+                    let divLogo = document.createElement("div");
+                    let locImage = document.createElement("img");
+                    locImage.src=`http://openweathermap.org/img/wn/${Data.daily[i].weather[0].icon}@2x.png`
+                    locImage.id="wImg";
+                    divLogo.append(p,locImage);
+                   
+                    let tempDiv = document.createElement("div");
+                    tempDiv.innerHTML=`<span id="temp">${data.main.temp}</span><span id="sel">&#176;C</span>`;
+                    tempDiv.id="temp";
+
+                    divRight.append(loc,divLogo,tempDiv);
+                     
+                     document.getElementById("rightOne").append(divRight);
+
+                }
+                else{
+
+                    
+                    let div = document.createElement("div");
+                    let p = document.createElement("p");
+                    p.innerText=`${window.moment(Data.daily[i].dt*1000).format('ddd')}`;
+        
+                    let img = document.createElement("img");
+                   img.src =`http://openweathermap.org/img/wn/${Data.daily[i].weather[0].icon}@2x.png`
+                    img.setAttribute("id","icon");
+        
+                    let dayCal = document.createElement("div");
+                     dayCal.innerText="Max-"+Data.daily[i].temp.max;
+                     //console.log(Data.daily[i].temp.max);
+                     dayCal.setAttribute("id","cals");
+                    let nightCal = document.createElement("div");
+                    nightCal.setAttribute("id","Ncals");
+                    nightCal.innerText="Min-"+Data.daily[i].temp.min;
+        
+                    div.append(p,img,dayCal,nightCal);
+        
+                    document.querySelector("#days").append(div);
+                }
+         
+              
+            }
+        
+        }
+
+
+        
+    }
+   
+
+     
+
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+setInterval(function()
+{
+    const time = new Date();
+    const month = time.getMonth();
+    const date = time.getDate();
+    const day = time.getDay();
+    const hour = time.getHours();
+    const hoursIn12HrsFormat = hour >=13 ? hour%12: hour;
+    const minutes = time.getMinutes();
+    const ampm = hour >=12 ? 'PM' : 'AM';
+
+    console.log(hoursIn12HrsFormat);
+    document.querySelector("#time").innerHTML= (hoursIn12HrsFormat <10? '0'+hoursIn12HrsFormat : hoursIn12HrsFormat) + ':' + (minutes <10? '0' +minutes :minutes) + ' ' +`<span id="ampm">${ampm}</span>`;
+
+    document.querySelector("#date").innerHTML=days[day] + ', '+ date+' '+months[month];
+   document.querySelector("#Rightdate").innerHTML=days[day] + ', '+ date+' '+months[month];
+},1000);
+
+
+
+
+
+
+
+
+
+
+function nightFun()
+{
+    document.getElementById("right").style.backgroundImage=`url("https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8d2VhdGhlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60")`;
+    document.getElementById("left").style.backgroundImage=`url("https://images.pexels.com/photos/2403402/pexels-photo-2403402.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")`;
+    document.getElementById("time").style.color="white";
+    document.getElementById("date").style.color="white";
+    document.getElementById("night").style.backgroundColor="red";
+    document.getElementById("day").style.backgroundColor="white";
+    document.getElementById("days").style.backgroundColor="black";
+    document.getElementById("days").style.opacity=".9";
+    document.getElementById("rightOne").style.opacity=".9";
+    document.getElementById("rightOne").style.backgroundImage=`url("https://images.pexels.com/photos/4100130/pexels-photo-4100130.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")`;
+
+
+
+   
+}
+
+function dayFun()
+{
+    document.getElementById("rightOne").style.backgroundImage=`url("https://img.freepik.com/free-photo/sunset_1127-3503.jpg?t=st=1647101732~exp=1647102332~hmac=92cb9920daf4d948b338ed6e15f9bfd7239e87dcefafee34bef5addabea67553&w=360")`;
+    document.getElementById("right").style.backgroundColor="white";
+    document.getElementById("left").style.backgroundImage=`url("https://img.freepik.com/free-vector/gorgeous-clouds-background-with-blue-sky-design_1017-25501.jpg?size=626&ext=jpg&ga=GA1.1.1608378299.1647101724")`;
+    document.getElementById("right").style.backgroundImage=`url("https://images.pexels.com/photos/1784577/pexels-photo-1784577.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")`;
+    document.getElementById("left").style.backgroundColor="rgb(237, 251, 253)";
+    document.getElementById("time").style.color="white";
+    document.getElementById("date").style.color="white";
+    document.getElementById("night").style.backgroundColor="white";
+    document.getElementById("day").style.backgroundColor="red";
+
+    document.getElementById("days").style.backgroundColor="white";
+
+   
+}
+</script>
+    </body>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+  
+    </html>
+    
+
+    
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+</html>
